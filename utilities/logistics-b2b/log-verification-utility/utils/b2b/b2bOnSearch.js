@@ -33,23 +33,23 @@ const checkOnSearch = async (data, msgIdSet) => {
     const providers = onSearch["providers"];
     for (let i = 0; i < providers.length; i++) {
       const provider = providers[i];
-      if (provider.hasOwnProperty("locations")) {
-        const locations = provider.locations;
-        for (let j = 0; j < locations.length; j++) {
-          const { id, gps, area_code } = locations[j];
-          try {
-            const [lat, long] = gps.split(",");
-            const match = await reverseGeoCodingCheck(lat, long, area_code);
-            if (!match) {
-              onSrchObj[
-                "bpp/provider:location:" + id + ":RGC"
-              ] = `Reverse Geocoding for location ID ${id} failed. Area Code ${area_code} not matching with ${lat},${long} Lat-Long pair.`;
-            }
-          } catch (error) {
-            console.log("bpp/providers error: ", error);
-          }
-        }
-      }
+      // if (provider.hasOwnProperty("locations")) {
+      //   const locations = provider.locations;
+      //   for (let j = 0; j < locations.length; j++) {
+      //     const { id, gps, area_code } = locations[j];
+      //     try {
+      //       const [lat, long] = gps.split(",");
+      //       const match = await reverseGeoCodingCheck(lat, long, area_code);
+      //       if (!match) {
+      //         onSrchObj[
+      //           "bpp/provider:location:" + id + ":RGC"
+      //         ] = `Reverse Geocoding for location ID ${id} failed. Area Code ${area_code} not matching with ${lat},${long} Lat-Long pair.`;
+      //       }
+      //     } catch (error) {
+      //       console.log("bpp/providers error: ", error);
+      //     }
+      //   }
+      // }
 
       //checking mandatory attributes for fashion and electronics
 
